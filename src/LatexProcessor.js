@@ -1,9 +1,8 @@
 "use strict";
 
-import { latexParser } from "latex-parser";
+import util from "util";
 
-import pandoc from "node-pandoc";
-import { parse } from "markdown-to-ast";
+import { parse } from "txt-to-ast";
 
 module.exports = class LatexProcessor {
   constructor(config) {
@@ -17,10 +16,7 @@ module.exports = class LatexProcessor {
   processor(ext) {
     return {
       preProcess(text, filePath) {
-        const res = pandoc(text, "-f markdown -t latex");
-        // TODO: tokens to ast TxtNode
-        console.log(res);
-        return res;
+        return parse(text);
       },
       postProcess(messages, filePath) {
         return {

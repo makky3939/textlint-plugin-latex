@@ -9,9 +9,8 @@
   },
   "dependencies": {
     "latex-parser": "^0.6.2",
-    "markdown-it": "^8.4.0",
-    "markdown-it-latex": "^0.2.0",
-    "markdown-to-ast": "^6.0.2"
+    "markdown-to-ast": "^6.0.2",
+    "node-pandoc": "^0.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

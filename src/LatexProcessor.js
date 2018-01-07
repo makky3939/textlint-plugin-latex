@@ -2,12 +2,8 @@
 
 import { latexParser } from "latex-parser";
 
-import MarkDownIt from "markdown-it";
-import markdownItLatex from "markdown-it-latex";
+import pandoc from "node-pandoc";
 import { parse } from "markdown-to-ast";
-
-const mdi = new MarkDownIt();
-mdi.use(markdownItLatex);
 
 module.exports = class LatexProcessor {
   constructor(config) {
@@ -21,10 +17,10 @@ module.exports = class LatexProcessor {
   processor(ext) {
     return {
       preProcess(text, filePath) {
-        const res = mdi.render(text);
+        const res = pandoc(text, "-f markdown -t latex");
         // TODO: tokens to ast TxtNode
         console.log(res);
-        return parse(res);
+        return res;
       },
       postProcess(messages, filePath) {
         return {

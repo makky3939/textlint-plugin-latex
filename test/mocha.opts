@@ -1,2 +1,2 @@
 --timeout 5000
---compilers js:babel-register
+--require babel-register

@@ -8,8 +8,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "latex-parser": "^0.6.2",
-    "textlint": "^10.1.1"
+    "latex-parser": "^0.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -20,6 +19,7 @@
     "glob": "^7.1.2",
     "mocha": "^4.1.0",
     "power-assert": "^1.4.4",
+    "textlint": "^10.1.1",
     "textlint-rule-no-todo": "^2.0.0"
   }
 }

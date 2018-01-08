@@ -69,15 +69,15 @@ hello
     });
     it("should remove commentout", () => {
       const text = `
-\\newpage % hello %
-80%果汁
+Hello % Yo %
+80\\%果汁
 % Hello
 `;
       const res = latexToPlainText(text);
       assert(
         res ===
           `
-\\newpage
+Hello
 80%果汁
 
 `

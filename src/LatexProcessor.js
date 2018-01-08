@@ -14,12 +14,15 @@ module.exports = class LatexProcessor {
   }
 
   static latexToPlainText(text) {
-    const plainText = text
-      .replace(/\\\w+\s*/g, "")
+    return text
+      .replace(/\\\w+ */g, "")
       .replace(/{+}+/g, "")
       .replace(/{+(.*?)}+/g, "「$1」")
-      .replace(/\s*\n\s*/g, "\n");
-    return plainText;
+      .replace(/^%[^\n]*/g, "")
+      .replace(/\n%[^\n]*/g, "\n")
+      .replace(/([^\\])%[^\n]*/g, "$1")
+      .replace(/\\%/g, "%")
+      .replace(/ *\n */g, "\n");
   }
 
   processor(ext) {

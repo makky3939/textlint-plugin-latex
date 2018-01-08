@@ -14,7 +14,11 @@ module.exports = class LatexProcessor {
   }
 
   static latexToPlainText(text) {
-    const plainText = text.replace(/{.*?}/g, "").replace(/\\/g, "");
+    const plainText = text
+      .replace(/\\\w+\s*/g, "")
+      .replace(/{+}+/g, "")
+      .replace(/{+(.*?)}+/g, "「$1」")
+      .replace(/\s*\n\s*/g, "\n");
     return plainText;
   }
 

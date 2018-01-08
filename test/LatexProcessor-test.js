@@ -30,17 +30,6 @@ describe("LatexPlugin", () => {
         assert(results.filePath === "<latex>");
       });
     });
-    it("should ignore newline", () => {
-      return textlint
-        .lintText(
-          `こんにちは。
-こんばんは。\\`,
-          ".tex"
-        )
-        .then(results => {
-          assert(results.messages.length === 0);
-        });
-    });
   });
 });
 
@@ -59,8 +48,8 @@ describe("LatexProcessor", () => {
           `
 「セクション名」
 文章「強調」文章「強調」文章。
-「bibname」「参考文献」
-「bf 学外発表」
+「参考文献」
+「学外発表」
 `
       );
     });
@@ -73,7 +62,7 @@ describe("LatexProcessor", () => {
       assert(
         res ===
           `
-こんにちは。
+「こんにちは。」
 hello
 `
       );

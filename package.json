@@ -2,7 +2,7 @@
   "name": "textlint-plugin-latex",
   "version": "1.0.0",
   "main": "src/index.js",
-  "author": "i544c <leo@i544c.me>",
+  "author": "elzup<guild0105@gmail.com>",
   "license": "",
   "scripts": {
     "test": "mocha"

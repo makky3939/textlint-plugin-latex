@@ -46,17 +46,51 @@ describe("LatexPlugin", () => {
 
 describe("LatexProcessor", () => {
   context("latexToPlainText", () => {
-    it("should remove command", () => {
+    it("should replace command", () => {
       const text = `
-\section{セクション名}
-句点がない文章
+\\section{セクション名}
+文章\\underline{強調}文章\\underline{強調}文章。
+\\renewcommand{\\bibname}{参考文献}
+{\\huge{\\bf 学外発表}}
 `;
       const res = latexToPlainText(text);
       assert(
         res ===
           `
-\section
-句点がない文章
+「セクション名」
+文章「強調」文章「強調」文章。
+「bibname」「参考文献」
+「bf 学外発表」
+`
+      );
+    });
+    it("should remove space", () => {
+      const text = `
+ \\huge{こんにちは。}
+   hello
+`;
+      const res = latexToPlainText(text);
+      assert(
+        res ===
+          `
+こんにちは。
+hello
+`
+      );
+    });
+    it("should remove commentout", () => {
+      const text = `
+\\newpage % hello %
+80%果汁
+% Hello
+`;
+      const res = latexToPlainText(text);
+      assert(
+        res ===
+          `
+\\newpage
+80%果汁
+
 `
       );
     });

@@ -83,5 +83,18 @@ Hello
 `
       );
     });
+    it("sould not change line number", () => {
+      const text = `
+
+a
+
+
+
+b
+
+`;
+      const res = latexToPlainText(text);
+      assert(res === text);
+    });
   });
 });

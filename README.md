@@ -34,6 +34,10 @@ See [Releases page](https://github.com/elzup/textlint-plugin-latex/releases).
 
 ## Convert method
 1. Convert LaTeX to plain text
+    - trim commentout `% hgoe ~`
+    - trim command `\section`
+    - command args to bracket `{2章}` -> `「2章」`
+    - keep line number
 2. txt-to-ast
 
 **From** (Official Sample text)

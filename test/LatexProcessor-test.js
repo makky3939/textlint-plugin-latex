@@ -5,6 +5,8 @@ import { TextLintCore } from "textlint";
 import PresetJaTechnicalWriting from "textlint-rule-preset-ja-technical-writing";
 
 import path from "path";
+
+const { latexToPlainText } = LatexPlugin.Processor;
 describe("LatexPlugin", () => {
   let textlint;
   beforeEach(() => {
@@ -38,6 +40,25 @@ describe("LatexPlugin", () => {
         .then(results => {
           assert(results.messages.length === 0);
         });
+    });
+  });
+});
+
+describe("LatexProcessor", () => {
+  context("latexToPlainText", () => {
+    it("should remove command", () => {
+      const text = `
+\section{セクション名}
+句点がない文章
+`;
+      const res = latexToPlainText(text);
+      assert(
+        res ===
+          `
+\section
+句点がない文章
+`
+      );
     });
   });
 });

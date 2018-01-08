@@ -1,4 +1,4 @@
-# textlint-plugin-latex
+# textlint-plugin-latex [![Build Status](https://travis-ci.org/elzup/textlint-plugin-latex.svg?branch=master)](https://travis-ci.org/elzup/textlint-plugin-latex)
 
 Latex plugin for [textlint](https://github.com/textlint/textlint &#34;textlint&#34;).
 

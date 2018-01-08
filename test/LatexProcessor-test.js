@@ -5,15 +5,15 @@ import { TextLintCore } from "textlint";
 import PresetJaTechnicalWriting from "textlint-rule-preset-ja-technical-writing";
 
 import path from "path";
-describe("LatexPlugin", function() {
+describe("LatexPlugin", () => {
   let textlint;
-  beforeEach(function() {
+  beforeEach(() => {
     textlint = new TextLintCore();
     textlint.setupPlugins({ html: LatexPlugin });
     textlint.setupRules(Object.assign({}, PresetJaTechnicalWriting.rules));
   });
-  context("when target file is a Tex", function() {
-    it("should report error", function() {
+  context("when target file is a Tex", () => {
+    it("should report error", () => {
       const fixturePath = path.join(__dirname, "/test.tex");
       return textlint.lintFile(fixturePath).then(results => {
         assert(results.messages.length === 1);
@@ -21,14 +21,14 @@ describe("LatexPlugin", function() {
       });
     });
   });
-  context("when target is text", function() {
-    it("should report error", function() {
+  context("when target is text", () => {
+    it("should report error", () => {
       return textlint.lintText("こんにちは", ".tex").then(results => {
         assert(results.messages.length === 1);
         assert(results.filePath === "<latex>");
       });
     });
-    it("should ignore newline", function() {
+    it("should ignore newline", () => {
       return textlint
         .lintText(
           `こんにちは。

@@ -13,11 +13,15 @@ module.exports = class LatexProcessor {
     return [".tex"];
   }
 
+  static latexToPlainText(text) {
+    const plainText = text.replace(/{.*?}/g, "").replace(/\\/g, "");
+    return plainText;
+  }
+
   processor(ext) {
     return {
       preProcess(text, filePath) {
-        const plainText = text.replace(/{.*?}/g, "").replace(/\\/g, "");
-        return parse(plainText);
+        return parse(LatexProcessor.latexToPlainText(text));
       },
       postProcess(messages, filePath) {
         return {

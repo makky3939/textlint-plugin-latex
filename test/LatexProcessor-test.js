@@ -16,7 +16,7 @@ describe("LatexPlugin", function() {
     it("should report error", function() {
       const fixturePath = path.join(__dirname, "/test.tex");
       return textlint.lintFile(fixturePath).then(results => {
-        assert(results.messages.length === 2);
+        assert(results.messages.length === 1);
         assert(results.filePath === fixturePath);
       });
     });
@@ -27,6 +27,17 @@ describe("LatexPlugin", function() {
         assert(results.messages.length === 1);
         assert(results.filePath === "<latex>");
       });
+    });
+    it("should ignore newline", function() {
+      return textlint
+        .lintText(
+          `こんにちは。
+こんばんは。\\`,
+          ".tex"
+        )
+        .then(results => {
+          assert(results.messages.length === 0);
+        });
     });
   });
 });

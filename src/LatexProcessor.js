@@ -16,7 +16,8 @@ module.exports = class LatexProcessor {
   processor(ext) {
     return {
       preProcess(text, filePath) {
-        return parse(text);
+        const plainText = text.replace(/{.*?}/g, "").replace(/\\/g, "");
+        return parse(plainText);
       },
       postProcess(messages, filePath) {
         return {

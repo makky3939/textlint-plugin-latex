@@ -1,14 +1,17 @@
 {
   "name": "textlint-plugin-latex",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "lib/index.js",
   "author": "elzup<guild0105@gmail.com>",
   "license": "MIT",
-  "files": ["bin/", "lib/", "src/"],
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
   "scripts": {
     "test": "mocha",
-    "build":
-      "cross-env NODE_ENV=production babel src --out-dir lib --source-maps",
+    "build": "cross-env NODE_ENV=production babel src --out-dir lib --source-maps",
     "prepublish": "npm run --if-present build",
     "clean": "rimraf lib/"
   },

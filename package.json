@@ -4,6 +4,9 @@
   "main": "lib/index.js",
   "author": "elzup<guild0105@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "textlintplugin"
+  ],
   "files": [
     "bin/",
     "lib/",
